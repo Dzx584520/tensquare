@@ -7,15 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="tensquare_common" />
+        <module name="tensquare_base" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="tensquare_base" target="1.8" />
       <module name="tensquare_common" target="1.8" />
       <module name="tensquare_parent52" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="tensquare_base" options="-parameters" />
       <module name="tensquare_common" options="-parameters" />
     </option>
   </component>
