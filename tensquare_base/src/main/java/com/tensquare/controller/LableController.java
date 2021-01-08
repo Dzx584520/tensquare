@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin //跨域问题解决
 @RequestMapping(value = "/label")
 public class LableController {
 
     @Autowired
     private LabelService labelService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public Result findAll(){
         List<Label> all = labelService.findAll();
         return new Result(true, StatusCode.OK,"message",all);
