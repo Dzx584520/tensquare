@@ -5,11 +5,11 @@ spring:
     name: tensquare-article #指定服务名
   datasource:  
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.205.128:3306/tensquare_article?characterEncoding=UTF8
+    url: jdbc:mysql://192.168.42.128:3306/tensquare_article?characterEncoding=UTF8
     username: root
-    password: root
+    password: 123456
   jpa: 
     database: MySQL
     show-sql: true
   redis:
-    host: 192.168.205.128
+    host: 192.168.42.128

@@ -11,8 +11,11 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -31,6 +34,7 @@ import com.tensquare.article.pojo.Channel;
  *
  */
 @Service
+@Transactional
 public class ChannelService {
 
 	@Autowired
@@ -77,6 +81,7 @@ public class ChannelService {
 	 * @param id
 	 * @return
 	 */
+	@Cacheable(value = "channel",key = "#id")
 	public Channel findById(String id) {
 		return channelDao.findById(id).get();
 	}
@@ -94,6 +99,7 @@ public class ChannelService {
 	 * 修改
 	 * @param channel
 	 */
+	@CacheEvict(value = "channel",key = "#channel.id")
 	public void update(Channel channel) {
 		channelDao.save(channel);
 	}
@@ -102,6 +108,7 @@ public class ChannelService {
 	 * 删除
 	 * @param id
 	 */
+	@CacheEvict(value = "channel",key = "#id")
 	public void deleteById(String id) {
 		channelDao.deleteById(id);
 	}
